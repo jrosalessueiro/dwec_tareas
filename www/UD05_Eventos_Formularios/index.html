@@ -63,7 +63,7 @@
     <body>
         <fieldset>
             <legend>DWEC05 - Solución Tarea</legend>
-            <form name="formulario" id="formulario" action="http://www.google.es" method="get">
+            <form name="formulario" id="formulario" action="http://www.google.es" method="get" onsubmit="contadorCookie()">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" />
                 <label for="apellidos">Apellidos:</label>
@@ -92,10 +92,12 @@
                 <input type="reset" name="limpiar" id="button" value="Limpiar" />
                 <input type="submit" name="enviar" id="enviar" value="Enviar" />
             </form>
-            <div id="errores"></div>
+            <div id="errores">
+                
+            </div>
             <div id="intentos">
                 <script>
-
+                    alert('Nº intentos de envíos: '+contador);
                 </script>
             </div>
         </fieldset>
