@@ -63,7 +63,7 @@
     <body>
         <fieldset>
             <legend>DWEC05 - Solución Tarea</legend>
-            <form name="formulario" id="formulario" action="http://www.google.es" method="get" onsubmit="contadorCookie()">
+            <form name="formulario" id="formulario" action='' method="get" onsubmit="return funcionesSolucion();">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" />
                 <label for="apellidos">Apellidos:</label>
@@ -76,8 +76,7 @@
                 <input name="email" type="text" id="email" />
                 <label for="provincia">Provincia:</label>
                 <select name="provincia" id="provincia">
-                    <option value="0" selected="selected">Seleccione
-                        Provincia</option>
+                    <option value="0" selected="selected">Seleccione Provincia</option>
                     <option value="C">A Coruña</option>
                     <option value="LU">Lugo</option>
                     <option value="OU">Ourense</option>
@@ -93,12 +92,8 @@
                 <input type="submit" name="enviar" id="enviar" value="Enviar" />
             </form>
             <div id="errores">
-                
             </div>
             <div id="intentos">
-                <script>
-                    alert('Nº intentos de envíos: '+contador);
-                </script>
             </div>
         </fieldset>
     </body>
