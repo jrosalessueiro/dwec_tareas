@@ -64,17 +64,17 @@ function validateForm() {
     return true;
 }
 
-    //devuelve true o false si text cumple o no la regla 
+//devuelve true o false si text cumple o no la regla 
 function validateText(text) {
     return /^[A-Za-z ]{1,30}$/.test(text);
 }
 
-    //devuelve true o false si age cumple o no la regla 
+//devuelve true o false si age cumple o no la regla 
 function validateAge(age) {
-    return !isNaN(age) && age >= 0 && age <= 105;
+    return !isNaN(age) && age >= 0 && age <= 105 && age != "";
 }
 
-    //devuelve true o false si dni cumple o no la regla 
+//devuelve true o false si dni cumple o no la regla 
 function validateDni(dni) {
     // ^ comienzo de la cadena.
     // \d{8} ocho dígitos.
@@ -85,7 +85,7 @@ function validateDni(dni) {
     return /^(\d{8})-[a-zA-Z]$/.test(dni);
 }
 
-    //devuelve true o false si email cumple o no la regla 
+//devuelve true o false si email cumple o no la regla 
 function validateEmail(email) {
     // ^ comienzo de la cadena.
     // [a-z]{1,15} entre 1 y 15 letras minúsculas.
@@ -97,13 +97,13 @@ function validateEmail(email) {
     return /^[a-z]{1,15}@[a-z]{1,10}.(com|es|gal|net|org|info)$/.test(email);
 }
 
-    //devuelve true o false según el tamaño de state, si tiene contenido o no 
+//devuelve true o false según el tamaño de state, si tiene contenido o no 
 function validateState(state) {
 
-    return state.length > 0;
+    return state != 0;
 }
 
-    //devuelve true o false si date cumple o no la regla 
+//devuelve true o false si date cumple o no la regla 
 function validateDate(date) {
     // ^ comienzo de la cadena.
     // d{2} dos dígitos.
@@ -116,7 +116,7 @@ function validateDate(date) {
     return /^\d{2}\/\d{2}\/\d{4}$/.test(date) || /^\d{2}\-\d{2}\-\d{4}$/.test(date);
 }
 
-    //devuelve true o false si phone cumple o no la regla 
+//devuelve true o false si phone cumple o no la regla 
 function validatePhone(phone) {
     // ^ comienzo de la cadena.
     // d{9} nueve dígitos.
@@ -125,15 +125,17 @@ function validatePhone(phone) {
     return /^(\d{9})$/.test(phone);
 }
 
-    //devuelve true o false si hour cumple o no la regla 
+//devuelve true o false si hour cumple o no la regla 
 function validateHour(hour) {
     // ^ comienzo de la cadena.
-    //d{2} dos dígitos.
-    // : dos puntos
-    // d{2} dos dígitos.
+    //d{2}: dos digitos 
+    // : dos puntos para separar horas de minutos.
+    //d{2}: dos digitos 
     //$ fin de la cadena
 
-    return /^\d{2}\:\d{2}\$/.test(hour);
+    //return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(time);
+    return /^\d{2}:\d{2}$/.test(hour);
+
 }
 
 window.onload = function () {
