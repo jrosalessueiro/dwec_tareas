@@ -1,9 +1,19 @@
 
 function funcionesSolucion() {
     contadorCookie();
-    validateForm();
+    var valid = validateForm();
 
-    return false;
+    if (!valid) {
+        return false;
+    }
+
+    var confirmation = confirm("¿Está seguro de que desea enviar el formulario?");
+
+    if (!confirmation) {
+        return false;
+    }
+
+    return true;
 }
 
 function validateForm() {
@@ -15,35 +25,35 @@ function validateForm() {
     }
 
     if (!validateText(document.getElementById("apellidos").value)) {
-        errors.nombre = "Apellidos no validos, deben ser un texto.";
+        errors.apellidos = "Apellidos no validos, deben ser un texto.";
     }
 
     if (!validateAge(document.getElementById("edad").value)) {
-        errors.nombre = "Edad no válida, debe ser un número entre 0 y 105 años.";
+        errors.edad = "Edad no válida, debe ser un número entre 0 y 105 años.";
     }
 
     if (!validateDni(document.getElementById("nif").value)) {
-        errors.nombre = "DNI no válida, deben ser 8 dígitos, un guión y una letra.";
+        errors.nif = "DNI no válida, deben ser 8 dígitos, un guión y una letra.";
     }
 
     if (!validateEmail(document.getElementById("email").value)) {
-        errors.nombre = "Email no válido, compruebe el valor introducido.";
+        errors.email = "Email no válido, compruebe el valor introducido.";
     }
 
     if (!validateState(document.getElementById("provincia").value)) {
-        errors.nombre = "La provincia no es válida, debe marcar una de las opciones.";
+        errors.provincia = "La provincia no es válida, debe marcar una de las opciones.";
     }
 
     if (!validateDate(document.getElementById("fecha").value)) {
-        errors.nombre = "La fecha no es válida, debe tener el formato dd/mm/aaaa o dd-mm-aaaa.";
+        errors.fecha = "La fecha no es válida, debe tener el formato dd/mm/aaaa o dd-mm-aaaa.";
     }
 
     if (!validatePhone(document.getElementById("telefono").value)) {
-        errors.nombre = "El teléfono no es válido, debe contener 9 dígitos.";
+        errors.telefono = "El teléfono no es válido, debe contener 9 dígitos.";
     }
 
     if (!validateHour(document.getElementById("hora").value)) {
-        errors.nombre = "La hora no es válida, debe ser introducida en el formato hh:mm.";
+        errors.hora = "La hora no es válida, debe ser introducida en el formato hh:mm.";
     }
 
     if (errors != {}) {
@@ -54,41 +64,28 @@ function validateForm() {
     return true;
 }
 
+    //devuelve true o false si text cumple o no la regla 
 function validateText(text) {
-
-    const textValido = text.match("^[A-Za-z]{1,20}$");
-
-    if (textValido) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^[A-Za-z ]{1,30}$/.test(text);
 }
 
+    //devuelve true o false si age cumple o no la regla 
 function validateAge(age) {
-
-    if (!isNaN(age) && age >= 0 && age <= 105) {
-        return true;
-    } else {
-        return false;
-    }
+    return !isNaN(age) && age >= 0 && age <= 105;
 }
 
+    //devuelve true o false si dni cumple o no la regla 
 function validateDni(dni) {
     // ^ comienzo de la cadena.
     // \d{8} ocho dígitos.
     // - un guión.
     // [a-zA-Z] una letra, mayúscula o minúscula.
     // $ fin de la cadena.
-    var dniValido = /^(\d{8})-[a-zA-Z]$/;
 
-    if (dniValido.test(dni)) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^(\d{8})-[a-zA-Z]$/.test(dni);
 }
 
+    //devuelve true o false si email cumple o no la regla 
 function validateEmail(email) {
     // ^ comienzo de la cadena.
     // [a-z]{1,15} entre 1 y 15 letras minúsculas.
@@ -97,24 +94,16 @@ function validateEmail(email) {
     // . un punto
     //(com|es|gal|net|org|info) alguna delos dominios más comunes 
     //$ fin de la cadena
-    var dniValido = /^[a-z]{1,15}@[a-z]{1,10}.(com|es|gal|net|org|info)$/;
-
-    if (dniValido.test(dni)) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^[a-z]{1,15}@[a-z]{1,10}.(com|es|gal|net|org|info)$/.test(email);
 }
 
+    //devuelve true o false según el tamaño de state, si tiene contenido o no 
 function validateState(state) {
 
-    if (state != "") {
-        return true;
-    } else {
-        return false;
-    }
+    return state.length > 0;
 }
 
+    //devuelve true o false si date cumple o no la regla 
 function validateDate(date) {
     // ^ comienzo de la cadena.
     // d{2} dos dígitos.
@@ -123,42 +112,28 @@ function validateDate(date) {
     // / barra o - guión
     // d{4} cuatro dígitos.
     //$ fin de la cadena
-    var dateValida1 = /^\d{2}\/\d{2}\/\d{4}$/;
-    var dateValida2 = /^\d{2}\-\d{2}\-\d{4}$/;
 
-    if (dateValida1.test(date) || dateValida2.test(date)) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^\d{2}\/\d{2}\/\d{4}$/.test(date) || /^\d{2}\-\d{2}\-\d{4}$/.test(date);
 }
 
+    //devuelve true o false si phone cumple o no la regla 
 function validatePhone(phone) {
     // ^ comienzo de la cadena.
     // d{9} nueve dígitos.
     //$ fin de la cadena
-    var phoneValido = /^(\d{9})$/;
 
-    if (phoneValido.test(phone)) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^(\d{9})$/.test(phone);
 }
 
+    //devuelve true o false si hour cumple o no la regla 
 function validateHour(hour) {
     // ^ comienzo de la cadena.
     //d{2} dos dígitos.
     // : dos puntos
     // d{2} dos dígitos.
     //$ fin de la cadena
-    var hourValida = /^\d{2}\:\d{2}\$/;
 
-    if (hourValida.test(hour)) {
-        return true;
-    } else {
-        return false;
-    }
+    return /^\d{2}\:\d{2}\$/.test(hour);
 }
 
 window.onload = function () {
@@ -170,14 +145,6 @@ window.onload = function () {
     document.getElementById("apellidos").addEventListener("blur", function () {
         var apellidos = document.getElementById("apellidos");
         apellidos.value = apellidos.value.toUpperCase();
-    });
-
-    document.getElementById("formulario").addEventListener("submit", function (event) {
-        var confirmation = confirm("¿Está seguro de que desea enviar el formulario?");
-
-        if (!confirmation) {
-            event.preventDefault();
-        }
     });
 }
 
