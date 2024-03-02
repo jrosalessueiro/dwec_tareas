@@ -133,7 +133,6 @@ function validateHour(hour) {
     //d{2}: dos digitos 
     //$ fin de la cadena
 
-    //return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(time);
     return /^\d{2}:\d{2}$/.test(hour);
 
 }
