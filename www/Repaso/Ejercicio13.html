@@ -1,0 +1,47 @@
+<!--Escribir un script que simule el lanzamiento de dos dados. 
+    Hacer uso de la función Math.random para obtener números aleatorios entre 1 y 6 
+    para cada uno de los lanzamientos de los dados. 
+    Sumar el resultado de lanzar dos dados y anotar en un array el número de apariciones de dicha suma, 
+    repitiendo 36.000 veces esta operación.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio Arrays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Ejercicio13Styles.css">
+</head>
+
+<body>
+    <script>
+        var sumaDadosArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        function dados() {
+            var dado1 = Math.floor(Math.random() * 6) + 1;
+            var dado2 = Math.floor(Math.random() * 6) + 1;
+            var suma = dado1 + dado2;
+            sumaDadosArray[suma - 2]++;
+        }
+
+        function lanzarDados() {
+            for (var i = 1; i <= 36000; i++) {
+                dados();
+            }
+
+            var resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = '<h2>Resultados</h2>';
+
+            for (var j = 0; j <= 10; j++) {
+                console.log('Los resultados son: ');
+                resultadosDiv.innerHTML += '<p>Suma ' + (j + 2) + ': ' + sumaDadosArray[j] + ' veces.</p>';
+            }
+        }
+    </script>
+    <h1>Lanzamiento de dados</h1>
+    <button onclick="lanzarDados()">Lanzar dados</button>
+    <div id="resultados"></div>
+</body>
+
+</html>
