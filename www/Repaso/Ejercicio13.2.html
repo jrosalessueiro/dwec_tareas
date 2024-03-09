@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio REGEXP 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Ejercicio13.2Styles.css">
+</head>
+
+<body>
+    <h1>Ejercicio REGEXP 13.2</h1>
+    <h2>Crear una expresión regular que valide una dirección de email.</h2>
+    <h3> Para simplificar, los valores antes de la @ pueden contener cualquier carácter alfanumérico, y los caracteres .
+        y -, mientras que los valores tras la @ pueden contener caracteres alfanuméricos, y el tipo de dominio puede
+        tener una longitud de 2 o 3 caracteres.</h3>
+
+    <form action="#" onsubmit="comprobar()">
+        <label for="email">Introduzca la dirección de correo</label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Comprobar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function comprobar() {
+            var regexp = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var valor = document.getElementById("email").value;
+
+            var resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+            resultadoDiv.innerHTML += regexp.exec(valor);
+        }
+    </script>
+</body>
+
+</html>
