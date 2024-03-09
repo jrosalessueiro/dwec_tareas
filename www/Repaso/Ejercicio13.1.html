@@ -1,0 +1,56 @@
+<!--Crear las expresiones regulares necesarias para resolver los siguientes puntos:
+
+1. Crear una expresión regular valide una fecha en formato "XX/XX/XXXX", donde "X" es un dígito. 
+Probarlo con la expresión: "Nací el 05/04/1982 en Donostia.".
+
+2.Crear una expresión regular que valide una dirección de email. Para simplificar, los valores antes 
+de la @ pueden contener cualquier carácter alfanumérico, y los caracteres . y -, mientras que los valores 
+tras la @ pueden contener caracteres alfanuméricos, y el tipo de dominio puede tener una longitud de 2 o 3 caracteres.
+
+3. Dada la siguiente función que de reemplazo de caracteres, reescribirla utilizando expresiones regulares.
+function escapeHTML(text) {
+    var replacements = [["&", "&amp;"], ["\"", "&quot;"],
+                        ["<", "&lt;"], [">", "&gt;"]];
+    forEach(replacements, function(replace) {
+        text = text.replace(replace[0], replace[1]);
+    });
+    return text;
+}
+
+4. Dados un nombre y un apellido, crear la expresión regulatr necesaria para mostrarlos en orden inverso y 
+separados por una coma. Por ejemplo, la cadena "John Smith", convertirla en "Smith, John".
+5. Crear una expresión regular que elimine las etiquetas potencialmente peligrosas (<script>...</script>) 
+y todo su contenido de una cadena HTML.-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio Expresiones regulares 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Ejercicio13.1.css">
+</head>
+
+<body>
+    <h1>Ejercicio Expresiones regulares</h1>
+    <h2>Crear una expresión regular valide una fecha en formato "XX/XX/XXXX", donde "X" es un dígito. </h2>
+    <h3>Probarlo con la expresión: "Nací el 05/04/1982 en Donostia.".</h3>
+
+    <button onclick="comprobar()">Comprobar</button>
+    <div id="resultado"></div>
+
+    <script>
+        function comprobar() {
+            var valor = "Nací el 05/04/1982 en Donostia.";
+            var regexp = /\d{2}\/\d{2}\/\d{4}/;
+            var resultadoDiv = document.getElementById('resultado');
+
+            resultadoDiv.innerHTML = '<h2>Resultado:</h2>';
+            resultadoDiv.innerHTML += regexp.exec(valor);
+        }
+    </script>
+</body>
+
+</html>
