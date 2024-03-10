@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora en diferentes formatos</title>
+</head>
+
+<body>
+    <h3>Elije el formato qn que quieras ver la hora actual</h3>
+
+    <select id="hora" onchange="mensaje()" required>
+        <option value="1">Detallada con minutos y segundos</option>
+        <option value="2">Hora con minutos y AM o PM</option>
+    </select>
+
+    <button onclick="mostrarHora()">Mostrar</button><br><br>
+    <button onclick="cerrarVentana()">Cerrar</button>
+
+    <p id="mensaje"></p>
+
+    <script>
+        function mostrarHora() {
+            //Según la elección mostramos el mensaje adecuado en el formato elegido
+            let eleccion = document.getElementById("hora").value;
+            let time = new Date();
+            let meridian;
+            if (time.getHours() > 11) {
+                meridian = "PM";
+            } else {
+                meridian = "AM";
+            }
+            let mensaje;
+
+            switch (eleccion) {
+                case "1":
+                    mensaje = "La hora actual es: " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+                    break;
+                case "2":
+                    if (meridian === "AM") {
+                        mensaje = "La hora actual es: " + time.getHours() + ":" + time.getMinutes() + " " + meridian;
+                    } else {
+                        mensaje = "La hora actual es: " + (time.getHours() - 12) + ":" + time.getMinutes() + " " + meridian;
+                    }
+                    break;
+                default:
+                    mensaje = "Seleccione una opción válida.";
+            }
+
+            // Mostrar el mensaje correspondiente
+            document.getElementById("mensaje").innerText = mensaje;
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

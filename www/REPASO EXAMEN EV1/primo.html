@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Numeros primos</title>
+</head>
+
+<body>
+    <script>
+        let numero = prompt("Introduzca un número");
+        if (numero <= 1 || isNaN(numero)) {
+            document.write(`El número ${numero} no es válido. 
+    Debes introducir un número mayor que 0.`);
+
+        } else if (numero <= 3) {
+            document.write(`El número ${numero} ES PRIMO`);
+
+        } else if (numero % 2 === 0 || numero % 3 === 0) {
+            document.write(`El número ${numero} NO ES PRIMO`);
+        }
+
+        let i = 5;
+        if (i * i <= numero) {
+            if (numero % i === 0 || numero % (i + 2) === 0) {
+                document.write(`El número ${numero} NO ES PRIMO`);
+            }
+            i += 6;
+        } else {
+            document.write(`El número ${numero} ES PRIMO`);
+        }
+    </script>
+</body>
+
+</html>

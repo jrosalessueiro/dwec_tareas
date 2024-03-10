@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraseña</title>
+</head>
+
+<body>
+    <h3>Introduce tu contraseña:</h3>
+    <form id="password" name="password" method="post" action="">
+        <label for="pass">Contraseña: </label>
+        <input type="text" id="contrasena" required>
+    </form><br><br>
+    <button onclick="calculosContrasena()">Verificar</button><br><br>
+    <button onclick="cerrarVentana()">Cerrar</button>
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="resultado3"></p>
+    <p id="resultado4"></p>
+    <p id="resultado5"></p>
+    <h3 id="resultado6"></h3>
+
+    <script>
+        function calculosContrasena() {
+            let password = document.getElementById("contrasena").value;
+
+            let resultado1;
+            let resultado2;
+            let resultado3;
+            let resultado4;
+            let resultado5;
+
+            if (password.length >= 8 && password.length <= 16) {
+                resultado1 = 1;
+                document.getElementById("resultado1").innerText = "La contraseña cumple la verificación 1: entre 8 y 16 caracteres";
+            } else {
+                document.getElementById("resultado1").innerText = "La contraseña NO cumple la verificación 1: debe tener entre 8 y 16 caracteres";
+            }
+
+            if (/[A-Z]/.test(password) === true) {
+                resultado2 = 1;
+                document.getElementById("resultado2").innerText = "La contraseña cumple la verificación 2: contiene alguna mayúscula";
+            } else {
+                document.getElementById("resultado2").innerText = "La contraseña NO cumple la verificación 2: debe contener alguna mayúscula";
+            }
+            if (/[a-z]/.test(password) === true) {
+                resultado3 = 1;
+                document.getElementById("resultado3").innerText = "La contraseña cumple la verificación 3: contiene alguna minúscula";
+            } else {
+                document.getElementById("resultado3").innerText = "La contraseña NO cumple la verificación 3: debe contener alguna minúscula";
+            }
+            if (/[0-9]/.test(password) === true) {
+                resultado4 = 1;
+                document.getElementById("resultado4").innerText = "La contraseña cumple la verificación 4: contiene algún número";
+            } else {
+                document.getElementById("resultado4").innerText = "La contraseña NO cumple la verificación 4: debe contener algún número";
+            }
+            if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password) === true) {
+                resultado5 = 1;
+                document.getElementById("resultado5").innerText = "La contraseña cumple la verificación 5: contiene algún caracter especial";
+            } else {
+                document.getElementById("resultado5").innerText = "La contraseña NO cumple la verificación 5: debe contener caracter especial";
+            }
+            if (resultado1 === 1 && resultado2 === 1 && resultado3 === 1 && resultado4 === 1 && resultado5 === 1) {
+                document.getElementById("resultado6").innerText = "Enhorabuena!!! tu contraseña ha pasado todas la verificaciones";
+            } else {
+                document.getElementById("resultado6").innerText = "Cuidado!!!! tu contraseña NO ha pasado las verificaciones. Prueba otra con otra diferente.";
+            }
+
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana emergente</title>
+</head>
+
+<body>
+    <h2>Elija una opción:</h2>
+
+    <button onclick="abrirventana()">Abrir Ventana</button></br></br>
+    <button onclick="moverventana()">Mover Ventana</button></br></br>
+    <button onclick="redimensionarventana()">Tamaño Ventana</button></br></br>
+    <button onclick="cerrarventana()">Cerrar Ventana</button></br></br>
+
+
+
+    <script>
+        let ventana;
+
+        function abrirventana() {
+            if (confirm("Permite que se abra una ventana remota?")) {
+                ventana = window.open("ventanaNueva.html", "", "width=300, height=300, top=400, left=400, toolbar=no, menubar=no, alwaysRaised=yes");
+
+                if (!ventana) {
+                    alert("No se ha podido abrir la ventana remota. Permite las ventanas emergentes, por favor.");
+                } else {
+                    ventana.focus();
+                }
+            }
+        }
+
+        function moverventana() {
+            if (ventana && !ventana.closed) {
+                let posx = ventana.posx;
+                let posy = ventana.posy;            
+            }
+             let cambioX = prompt("Introduzca cuantos px quiere mover la ventana en horizontal:");
+             let cambioY =prompt("Introduzca cuantos px quiere mover la ventana en vertical:");
+
+             let nuevaPosX = posx + cambioX;
+             let nuevaPosY =posy + cambioY;
+
+             ventana.moveTo(nuevaPosX,nuevaPosY);
+        }
+
+    </script>
+</body>
+
+</html>

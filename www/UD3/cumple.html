@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpleaños en fin de semana</title>
+</head>
+
+<body>
+    <h3>Introduce el día y el mes de tu cumpleaños</h3>
+    <form id="aniversario" name="aniversario" method="post" action="">
+        <label for="dia">Día: </label>
+        <select id="day" name="day" required>
+            <!--Creamos el select para los días-->
+            <script> for (let x = 1; x <= 31; x++) {
+                    document.write("<option>" + parseInt(x) + "</option>")
+                }              
+            </script>
+
+        </select>
+
+        <label for="mes">Mes: </label>
+        <!--Creamos el select para los meses-->
+        <select id="month" name="month" required>
+
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+
+        </select>
+
+    </form><br><br>
+    <button onclick="calcularCumpleFinSemana()">Mostrar</button><br><br>
+    <button onclick="cerrarVentana()">Cerrar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularCumpleFinSemana() {
+
+            //Obtenemos el mes y el día introducidos por el usuario
+            const dia = parseInt(document.getElementById("day").value);
+            const mes = parseInt(document.getElementById("month").value);
+
+            //Obtenemos la fecha de cumpleaños
+            let fecha = new Date();
+            let cumple = new Date(fecha.getFullYear(), mes - 1, dia); //ya que los meses en js van de 0 a 11
+            let resultado = [];
+
+            for (let anio = fecha.getFullYear(); anio <= 2100; anio++) {
+                cumple = new Date(anio,mes-1,dia);
+
+                if(cumple.getDay() === 6 || cumple.getDay() === 0) {  // El día 6 es el sábado y el 0 es el Domingo
+                    resultado.push(anio);
+                }
+            }
+
+            mostrarResultado(resultado);
+        }
+        function mostrarResultado(result) {
+
+            const resultadosHTML = result.length > 0
+                ? `Años en los que tu cumpleaños cae en fin de semana: ${result.join(', ')}`
+                : 'Tu cumpleaños no cae en fin de semana hasta el año 2100.';
+
+            document.getElementById("resultado").innerText = resultadosHTML;
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

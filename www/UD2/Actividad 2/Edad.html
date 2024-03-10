@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <tittle>Etapas de la vida según tu edad</tittle>
+</head>
+
+<body>
+    <h1>Actividad 2 - Tarea 2 de DWEC - Edad</h1>
+    <form onsubmit="edad(event)">
+        <label for="numero">
+            <h2>Introduce tu edad (años):</h2>
+        </label>
+        <input type="number" id="numero" required />
+        <input type="submit" value="Comprobar" />
+    </form>
+    <p id="resultado"></p>
+
+    <script src="E:\VisualCodeStudio\Practicas\dwec\UD2\Actividad 2\Edad.js"></script>
+
+    <script>
+        const edad = (event) => {
+            event.preventDefault();
+            const numero = parseInt(document.getElementById('numero').value);
+
+            if (numero < 0 || numero > 100) {
+                document.getElementById('resultado').textContent = "Por favor, introduce una valor de edad entero y positivo que esté entre 0 y 100 años.";
+            } else {
+                document.getElementById('resultado').textContent = "Como tienes " + numero + " años, tu etapa de la vida es: " + etapa(numero);
+            }
+        };
+    </script>
+</body>
+
+</html>

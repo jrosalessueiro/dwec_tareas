@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana Principal</title>
+</head>
+<body>
+<h3>Elija una opción:</h3>
+<button onclick="abrirVentana()">Abrir Ventana</button>
+<button onclick="moverVentana()">Mover Ventana</button>
+<button onclick="redimensionarVentana()">Redimensionar Ventana</button>
+<button onclick="cerrarVentanaRemota()">Cerrar Ventana Remota</button>
+
+<script>
+let ventanaRemota;
+
+function abrirVentana() {
+    // Pide permiso al usuario
+    if (confirm("¿Quieres abrir la ventana?")) {
+        // Abre la nueva ventana con las propiedades especificadas
+        ventanaRemota = window.open("ventana.html", "", "width=300, height=300, top=400, left=400, toolbar=no, menubar=no, alwaysRaised=yes");
+        // Comprueba si la ventana se abrió correctamente
+        if (!ventanaRemota) {
+            alert("No se pudo abrir la ventana. Por favor, permite las ventanas emergentes.");
+        } else {
+            // Enfoca la ventana remota
+            ventanaRemota.focus();
+        }
+    }
+}
+
+function moverVentana() {
+    // Comprueba si la ventana está abierta
+    if (ventanaRemota && !ventanaRemota.closed) {
+        // Obtiene la posición actual de la ventana remota
+        let posX = ventanaRemota.screenX + 50;
+        let posY = ventanaRemota.screenY + 50;
+
+        // Mueve la ventana a una nueva posición
+        ventanaRemota.moveTo(posX, posY);
+
+        // Enfoca la ventana remota
+        ventanaRemota.focus();
+    } else {
+        alert("La ventana remota está cerrada.");
+    }
+}
+
+function redimensionarVentana() {
+    // Comprueba si la ventana está abierta
+    if (ventanaRemota && !ventanaRemota.closed) {
+        // Redimensiona la ventana a 500x500
+        ventanaRemota.resizeTo(500, 500);
+
+        // Enfoca la ventana remota
+        ventanaRemota.focus();
+    } else {
+        alert("La ventana remota está cerrada.");
+    }
+}
+
+function cerrarVentanaRemota() {
+    // Comprueba si la ventana está abierta
+    if (ventanaRemota && !ventanaRemota.closed) {
+        // Cierra la ventana remota
+        ventanaRemota.close();
+    } else {
+        alert("La ventana remota ya está cerrada.");
+    }
+}
+</script>
+
+</body>
+</html>

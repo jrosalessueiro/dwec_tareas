@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale=1.0">
+    <title>Strings</title>
+
+
+    <script>
+        function mostrarDatos() {
+            let nombre = document.getElementById("nombreApellidos").value;
+
+            let nombrePartes = nombre.split(" ");
+            let nombre1;
+            let nombre2;
+            let apellido1;
+            let apellido2;
+
+            if (nombrePartes == 4) {
+                nombre1 = nombrePartes[0];
+                nombre2 = nombrePartes[1];
+                apellido1 = nombrePartes[2];
+                apellido2 = nombrePartes[3];
+            }else{
+                nombre1 = nombrePartes[0];
+                apellido1 = nombrePartes[1];
+                apellido2 = nombrePartes[2];
+            }
+
+           document.getElementById("resultado1").innerText=`El tamaño del nombre completo es ${nombre.trim().length}`;
+           document.getElementById("resultado2").innerText=`El tamaño del nombre completo sin espacios es ${nombre.replace(/\s/g,"").length}`;
+           document.getElementById("resultado3").innerText=`El nombre completo en minúsculas es: ${nombre.toLowerCase()}`;
+           document.getElementById("resultado4").innerText=`El nombre completo en mayúsculas es: ${nombre.toUpperCase()}`;
+
+        }
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <h3>Introduzca su Nombre y Apellidos</h3>
+    <form id="nombres" name="nombres" method="post" action="">
+        <label id="nombrecompleto" name="nombrecompleto">Nombre y Apellidos:</label>
+        <input type="text" id="nombreApellidos" required>
+    </form>
+
+    <input type="button" onclick="mostrarDatos()" value="Mostrar">
+    <input type="button" onclick="password()" value="Contraseña">
+
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="resultado3"></p>
+    <p id="resultado4"></p>
+    <p id="resultado5"></p>
+    <p id="resultado6"></p>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Fechas</title>
+
+    <script>
+        let fecha = new Date();
+
+        function finCurso() {
+            let fin = new Date(2024, 6, 25); //ya que los meses en js van de 0 a 11
+            let tiempo = Math.round(Math.abs(fin - fecha) / 1000 / 60 / 60 / 24);
+            document.write(`<p> Para final de curso quedan: ${tiempo} días.</p>`);
+        }
+
+        function cumple() {
+            let diaAniversario = prompt("Indique cual es el día de su cumpleaños:(1-31)");
+            let mesAniversario = prompt("Indique cual es el mes de su cumpleaños:(1-12)");
+
+            let ano = fecha.getFullYear();
+            let cumple = new Date(ano, mesAniversario - 1, diaAniversario); //ya que los meses en js van de 0 a 11
+            let resultado = [];
+
+            while (ano <= 2100) {
+                cumple = new Date(ano, mesAniversario - 1, diaAniversario);
+                if (cumple.getDay() === 6 || cumple.getDay() === 0) {
+                    resultado.push(cumple.ano);
+                    ano++;
+                    document.write(`Los años en los que su cumpleaños caerá en fin de semana son: ${resultado.join(', ')}`);
+                }
+
+            }
+            document.write(`<p> Para final de curso quedan: ${tiempo} días.</p>`);
+        }
+
+        function formatoFecha() {
+           document.write("<select id='fechas' required>)
+
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="button" onclick="finCurso()" id="curso" name="curso" value="Fin de Curso">
+    <input type="button" onclick="cumple()" id="cumple" name="cumple" value="Aniversario">
+    <input type="button" onclick="formatoFecha()" id="fechas" name="fechas" value="Fecha Actual">
+    <input type="button" onclick="formatoHora()" id="horas" name="horas" value="Hora Actual">
+</body>
+
+</html>

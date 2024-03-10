@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin de Curso</title>
+</head>
+
+<body>
+
+    <h3>Días hasta fin de Curso</h3>
+    <p>Fecha actual:<span id="hoy"></span></p>
+    <p>Fin de curso: <span id="fin"></span></p>
+    <p>Diferencia en días: <span id="diferencia"></span></p>
+
+
+    <button onclick="cerrarVentana()">Cerrar</button>
+
+    <script>
+        let fecha = new Date();
+        let fin = new Date(2024, 6, 25); //ya que los meses en js van de 0 a 11
+
+        document.getElementById("hoy").innerText = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
+        document.getElementById("fin").innerText = fin.getDate() + '/' + (fin.getMonth() + 1) + '/' + fin.getFullYear();
+
+        document.getElementById("diferencia").innerText = diferenciaDias(fecha, fin);
+
+        function diferenciaDias(fecha, fin) {
+            let diferencia = Math.round(Math.abs(fecha - fin) / 1000 / 60 / 60 / 24);
+            return diferencia + ' días quedan hasta final de curso.';
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

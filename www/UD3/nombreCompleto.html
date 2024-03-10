@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre y Apellidos</title>
+</head>
+
+<body>
+    <h3>Introduce tu nombre y apellidos</h3>
+    <form id="nombreCompleto" name="nombreCompleto" method="post" action="">
+        <label for="nomeCompleto">Nombre y Apellidos: </label>
+        <input type="text" id="nome" required>
+    </form><br><br>
+    <button onclick="calculosString()">Mostrar Datos</button><br><br>
+    <button onclick="cerrarVentana()">Cerrar</button>
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="resultado3"></p>
+    <p id="resultado4"></p>
+    <p id="resultado5"></p>
+    <p id="resultado6"></p>
+
+    <script>
+        function calculosString() {
+            let nombre = document.getElementById("nome").value;
+            let nombrePartes = nombre.split(" ");
+            let nombre1;
+            let nombre2;
+            let apellido1;
+            let apellido2;
+            let resultado1;
+            let resultado2;
+            let resultado3;
+            let resultado4;
+            let resultado5;
+            let resultado6;
+
+            if (nombrePartes[3] != null) {
+                 nombre1 = nombrePartes[0];
+                 nombre2 = nombrePartes[1];
+                 apellido1 = nombrePartes[2];
+                 apellido2 = nombrePartes[3];
+            } else {
+                 nombre1 = nombrePartes[0];
+                 apellido1 = nombrePartes[1];
+                 apellido2 = nombrePartes[2];
+            }
+
+            document.getElementById("resultado1").innerText = "El tamaño del nombre y los apellidos es: " + nombre.trim().length;
+            document.getElementById("resultado2").innerText = "El tamaño del nombre y los apellidos sin espacios es: " + nombre.replace(/\s/g, "").length;
+            document.getElementById("resultado3").innerText = "El nombre y los apellidos en minúsculas es: " + nombre.toLowerCase();
+            document.getElementById("resultado4").innerText = "El nombre y los apellidos en mayúsculas es: " + nombre.toUpperCase();
+            if (nombrePartes[3] != null) {
+                document.getElementById("resultado5").innerText = "El nombre es: " + nombre1 + " " + nombre2 + " . El primer apellido es: " + apellido1 + " y el segundo apellido es: " + apellido2;
+
+            } else {
+                document.getElementById("resultado5").innerText = "El nombre es: " + nombre1 + " " + ". El primer apellido es: " + apellido1 + " y el segundo apellido es: " + apellido2;
+            }
+
+            document.getElementById("resultado6").innerText = "La propuesta de nombre de usuario es: " + nombre1.toLowerCase() + apellido1.charAt(0).toUpperCase() + apellido2.charAt(0).toUpperCase();
+
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

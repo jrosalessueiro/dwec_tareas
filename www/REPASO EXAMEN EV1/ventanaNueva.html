@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Ventana</title>
+</head>
+
+<body>
+    <script>
+        let url = window.location.href;
+        let protocolo = window.location.protocol;
+        let navegador = window.navigator.userAgent;
+        let java = navigator.javaEnabled();
+
+        if (navigator.javaEnabled()) {
+            java = "disponible";
+        } else {
+            java = "no disponible";
+        }
+
+        document.write("<h3>Exemplo de Ventá nova</h3>");
+        document.write(`<p>URL: ${url}</p>`);
+        document.write(`<p>Protocolo: ${protocolo}</p>`);
+        document.write(`<p>Navegador: ${navegador}</p>`);
+        document.write(`<p>Java: ${java}</p>`);
+    </script>
+
+    <button onclick="cerrarventana()">Cerrar Ventana</button>
+
+    <script>
+        function cerrarventana(){
+            window.close();
+        }
+    </script>
+</body>
+
+</html>

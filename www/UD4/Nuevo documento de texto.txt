@@ -1,0 +1,1 @@
+                const dstyle["'Blues', 'Bolero', 'Clásica', 'Dance', 'Disco', 'Fado', 'Folk', 'Country', 'Funk', 'Electrónica',  'Hip hop', 'Jazz', 'Rock', 'Reggae', 'New age', 'Pop', 'Reguetón', 'Rumba', 'Soul', 'Urbana'"];

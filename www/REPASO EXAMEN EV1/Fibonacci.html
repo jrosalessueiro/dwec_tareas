@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fibonacci</title>
+</head>
+
+<body>
+    <h1>Los prieros 10 elementos de una serie de fibonacci son:</h1>
+    <script>
+        let aleatorio = Math.round(Math.random() * 100);
+        let a = aleatorio;
+        let b = aleatorio;
+
+        for (let j = 1; j <= 2; j++) {
+            document.write("<p> El elemento " + j + " de la serie es: " + aleatorio + "</p>");
+        }
+
+        for (let i = 3; i <= 10; i++) {
+            let resultado = a + b;
+           
+            document.write("<p> El elemento " + i + " de la serie es: " + resultado + "</p>");
+            a = b;
+            b= resultado;
+        }
+    </script>
+</body>
+
+</html>

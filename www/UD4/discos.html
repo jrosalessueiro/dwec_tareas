@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Discos</title>
+</head>
+
+</html>
+
+<body>
+    <div>
+        <h1>Base de Datos de los Discos de Casa</h1>
+        <button onclick='Disk.newDisk()'>Nuevo Disco</button>
+        <button onclick='Disk.showCollection()'>Mostrar Colección</button>
+        <button onclick='Disk.diskInfo()'>Información Disco</button>
+
+        <p id='resultado1'></p>
+        <p id='resultado2'></p>
+        <p id='resultado3'></p>
+    </div>
+    <script>
+        let disks = new Map();
+
+        class Disk {
+
+            constructor(dname, dgroup, dyear, dstyle, dlend) {
+                this.dname = dname;
+                this.dgroup = dgroup;
+                this.dyear = dyear;
+                this.dstyle = dstyle;
+                this.dlend = dlend;
+            }
+            static newDisk() {
+                const dname = prompt('Ingrese el nombre del disco:');
+                const dgroup = prompt('Ingrese el nombre del cantante o grupo:');
+                const dyear = prompt('Ingrese el año de publicación del disco:');
+                const dstyle = prompt('Ingrese el estilo musical del disco:');
+                const dlend = confirm('¿El disco está prestado? (Aceptar para sí, Cancelar para no)');
+
+                if (disks.get(dname) != null) {
+                    document.getElementById('resultado1').innerText = 'El disco ' + dname + ' ya existe en la base de datos.';
+
+                } else {
+                    let disk = new Disk(dname, dgroup, dyear, dstyle, dlend);
+                    disks.set(dname, disk);
+                    document.getElementById('resultado1').innerText = 'El disco ' + disk.dname + ' ha sido registrado correctamente.';
+                }
+            }
+            static diskInfo() {
+                const seekDisk = prompt('Ingrese el nombre del disco que quiere buscar:');
+                if (disks.has(seekDisk)) {
+                    let available = disks.has(seekDisk).dlend ? 'Sí' : 'No';
+                    let result = ('Nombre: ' + disks.get(seekDisk).dname + '\nGrupo: ' + disks.get(seekDisk).dgroup + '\nAño: ' + disks.get(seekDisk).dyear + '\nEstilo: ' + disks.get(seekDisk).dstyle + '\nDisponible: ' + available + '\n\n');
+                    document.getElementById('resultado2').innerText = result;
+                } else {
+                    document.getElementById('resultado2').innerText = 'El disco ' + seekDisk + ' no está en la base de datos "Discos de Casa"';
+                }
+
+            }
+            static showCollection() {
+                let result = '';
+
+                for (let [key, value] of disks) {
+                    let available = value.dlend ? 'Sí' : 'No';
+                    result += ('Nombre: ' + key + '\nGrupo: ' + value.dgroup + '\nAño: ' + value.dyear + '\nEstilo: ' + value.dstyle + '\nDisponible: ' + available + '\n\n');
+
+                }
+                document.getElementById('resultado3').innerText = result;
+
+            }
+        }
+    </script>
+</body>

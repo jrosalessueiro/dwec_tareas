@@ -1,0 +1,16 @@
+<script src="./Disco.js"></script>
+
+<script>
+    function mostrarInformacionDisco() {
+        const nombre = document.getElementById('nombreDisco').value;
+
+        Disk.mostrarInformacionDisco(nombre);
+    }
+</script>
+
+<form>
+    <label for="nombreDisco">Nombre del Disco:</label>
+    <input type="text" id="nombreDisco" required><br>
+
+    <button type="button" onclick="mostrarInformacionDisco()">Mostrar</button>
+</form>

@@ -1,0 +1,10 @@
+<script src="./Disco.js"></script>
+
+<script>
+    // Función para mostrar la colección de discos
+    function mostrarColeccion() {
+        Disk.coleccionDiscos.forEach((disco, nombre) => {
+            console.log(`Nombre: ${nombre}'\n', Grupo: ${disco.grupo}'\n', Año: ${disco.añoPublicacion}'\n', Estilo: ${disco.estiloMusical}'\n', Prestado: ${disco.prestado}'\n'`);
+        });
+    }
+</script>

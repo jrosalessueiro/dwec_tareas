@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar un disco nuevo</title>
+    <script src="./Disco.js"></script>
+</head>
+
+<body>
+    <script>
+        function cargarDisco(name, group, year, style, available) {
+            var name = document.getElementById('name').value;
+            var group = document.getElementById('group').value;
+            var year = document.getElementById('year').value;
+            var style = document.getElementById('style').value;
+            var available = document.getElementById('available').value;
+
+            if (name && group && year && style && available) {
+                const nuevoDisco = new Disk(name, group, year, style, available);
+
+                Disk.add(nuevoDisco);
+
+                console.log("Disco cargado y agregado:", nuevoDisco);
+            } else {
+                console.log("Por favor, complete todos los campos del formulario.");
+            }
+        }
+    </script>
+    <h1>Carga de nuevo disco</h1>
+    <form>
+        <fieldset>
+            <legend>Datos del disco</legend>
+            <p>
+                <label style='display: inline-block; width: 180px' for="name">Nombre:</label>
+                <input type="text" id="name">
+            </p>
+            <p>
+                <label style='display: inline-block; width: 180px' for="group">Grupo:</label>
+                <input type="text" id="group">
+            </p>
+            <p>
+                <label style='display: inline-block; width: 180px' for="year">Año publicación:</label>
+                <input type="text" id="year">
+            </p>
+            <p>
+                <label style='display: inline-block; width: 180px' for="style">Estilo musical:</label>
+                <select name="style" id="style" style='display: inline-block; width: 180px' for="style">
+                    <option value="Blues">Blues</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Reggae">Reggae</option>
+                    <option value="Clásica">Clásica</option>
+                    <option value="Rap">Rap</option>
+                    <option value="Country">Country</option>
+                    <option value="Latina">Latina</option>
+                    <option value="Regetón">Regetón</option>
+                    <option value="Surfer">Surfer</option>
+                </select>
+                
+            </p>
+            <p>
+                <label style='display: inline-block; width: 180px' for="available">Prestado:</label>
+                <input type="text" id="available">
+                
+            </p>
+
+            <br><button type="button" onclick="cargarDisco(name,group,year,style,available)">Guardar</button><br>
+        </fieldset>
+    </form>
+
+    <footer>
+        <p>
+            <a href='index.html'>Página de inicio</a>
+        </p>
+    </footer>
+</body>
+
+</html>

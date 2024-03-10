@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha en diferentes formatos</title>
+</head>
+
+<body>
+    <h3>Elije el formato qn que quieras ver la fecha actual</h3>
+
+    <select id="fecha" onchange="mensaje()" required>
+        <option value="1">dd/mm/aaaa</option>
+        <option value="2">Completa en español</option>
+        <option value="3">Completa en inglés</option>
+    </select>
+
+    <button onclick="mostrarFecha()">Mostrar</button><br><br>
+    <button onclick="cerrarVentana()">Cerrar</button>
+
+    <p id="mensaje"></p>
+
+    <script>
+        function mostrarFecha() {
+            //Según la elección mostramos el mensaje adecuado en el formato elegido
+            let eleccion = document.getElementById("fecha").value;
+            let date = new Date();
+            let mensaje;
+
+            switch (eleccion) {
+                case "1":
+                    mensaje = "La fecha actual es: " + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                    break;
+                case "2":
+                    let diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+                    let meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+                    mensaje = "La fecha actual es: " + diasSemana[date.getDay()] + ", " + date.getDate() + " de " + meses[date.getMonth()] + " de " + date.getFullYear();
+                    break;
+                case "3":
+                    let daysWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                    mensaje = "La fecha actual es: " + daysWeek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+                    break;
+                default:
+                    mensaje = "Seleccione una opción válida.";
+            }
+
+            // Mostrar el mensaje correspondiente
+            document.getElementById("mensaje").innerText = mensaje;
+        }
+
+        function cerrarVentana() {
+            // Cierra la ventana remota
+            window.close();
+        }
+    </script>
+
+</body>
+
+</html>

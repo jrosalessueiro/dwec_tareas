@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 3 Date</title>
+</head>
+
+<body>
+    <h3>Elija una opción:</h3>
+    <button onclick="finCurso()">Días hasta fin de Curso</button>
+    <button onclick="finSemana()">Cumpleaños en fin de semana</button>
+    <button onclick="fechaActual()">Fecha Actual</button>
+    <button onclick="horaActual()">Hora Actual</button>
+
+    <script>
+        let ventanaRemota;
+
+        function finCurso() {
+            ventanaRemota = window.open("finCurso.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+
+        function finSemana() {
+            ventanaRemota = window.open("cumple.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+
+        function fechaActual() {
+            ventanaRemota = window.open("fecha.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+
+        function horaActual() {
+            ventanaRemota = window.open("hora.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+    </script>
+
+</body>
+
+</html>

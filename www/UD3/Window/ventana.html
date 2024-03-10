@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana Remota</title>
+</head>
+<body>
+
+<h3>Exemplo de Ventá nova</h3>
+<p>URL: <span id="url"></span></p>
+<p>Protocolo: <span id="protocolo"></span></p>
+<p>Navegador: <span id="navegador"></span></p>
+<p id="javaDisponible"></p>
+
+<button onclick="cerrarVentana()">Cerrar Ventana Remota</button>
+
+<script>
+document.getElementById("url").innerText = window.location.href;
+document.getElementById("protocolo").innerText = window.location.protocol;
+document.getElementById("navegador").innerText = navigator.userAgent;
+
+// Comprueba si Java está disponible
+document.getElementById("javaDisponible").innerText = "Java " + (navigator.javaEnabled() ? "está disponible" : "no está disponible");
+
+function cerrarVentana() {
+    // Cierra la ventana remota
+    window.close();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 3 String</title>
+</head>
+
+<body>
+    <h3>Elija una opción:</h3>
+    <button onclick="nombre()">Nombre y apellidos</button>
+    <button onclick="contrasenal()">Contraseñal</button>
+   
+    <script>
+        let ventanaRemota;
+
+        function nombre() {
+            ventanaRemota = window.open("nombreCompleto.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+
+        function contrasenal() {
+            ventanaRemota = window.open("contrasenal.html", "", "width=700, height=700, top=600, left=400, toolbar=no, menubar=no");
+        }
+
+    </script>
+
+</body>
+
+</html>

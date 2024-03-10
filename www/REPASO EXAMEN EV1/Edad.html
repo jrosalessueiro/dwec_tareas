@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Clasificación según edad</title>
+</head>
+
+<body>
+    <script>
+
+        let edad = prompt("Introduzca su edad por favor:");
+
+        switch (true) {
+            case edad >= 0 && edad <= 12:
+                document.write("<p> Usted se encuentra en la etapa <strong>Niño</strong></p>");
+                break;
+            case edad >= 13 && edad <= 18:
+                document.write("<p> Usted se encuentra en la etapa <strong>Adolescente</strong></p>");
+                break;
+            case edad >= 19 && edad <= 30:
+                document.write("<p> Usted se encuentra en la etapa <strong>Joven</strong></p>");
+                break;
+            case edad >= 31 && edad <= 64:
+                document.write("<p> Usted se encuentra en la etapa <strong>Adulto</strong></p>");
+                break;
+            case edad >= 65 && edad <= 100:
+                document.write("<p> Usted se encuentra en la etapa <strong>Jubilado</strong></p>");
+                break;
+            default:
+                document.write("<p> Introduzca un valor entre 0 y 100.</p>");
+                break;
+        }
+    </script>
+</body>
+
+</html>
