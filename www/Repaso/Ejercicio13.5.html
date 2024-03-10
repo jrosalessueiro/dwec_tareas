@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio REGEXP 13.5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Ejercicio13.5Styles.css">
+</head>
+
+<body>
+    <h1>Ejercicio REGEXP 13.5</h1>
+    <h2>Crear una expresión regular que elimine las etiquetas potencialmente peligrosasy todo su contenido de una cadena
+        HTML.</h2>
+
+    <div id="resultado"></div>
+
+    <form action="#" onsubmit="cambiar(); return false;">
+        <label for="code">Introduzca su código html:</label><br>
+        <textarea id="code" style="height:300px; width: 600px;" required></textarea><br>
+        <button type="submit">Cambiar</button>
+    </form>
+
+    <script>
+        function cambiar() {
+            var regexp = /<script.*?<\/script>|<iframe.*?<\/iframe>|<object.*?<\/object>|<embed.*?<\/embed>/;
+            var dirtyCode = document.getElementById('code').value;
+
+            var resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+
+            resultadoDiv.innerHTML += dirtyCode.replace(regexp, '');
+        }
+    </script>
+</body>
+
+</html>
