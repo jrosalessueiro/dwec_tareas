@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio REGEXP 13.4.2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Ejercicio13.4.2Styles.css">
+</head>
+
+<body>
+    <h1>Ejercicio REGEXP 13.4.2</h1>
+    <h2>Dado un nombre y un apellido, crear la expresión regulatr necesaria para mostrarlos en orden inverso y
+        separados por una coma.</h2>
+    <h3>Por ejemplo, la cadena "John Smith", convertirla en "Smith, John".</h3>
+
+    <form action="#" onsubmit="cambiar()">
+        <label for="name">Introduzca su nombre y apellidos:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Cambiar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function cambiar() {
+            var regexp = /^(\w+)\s+(\w+)$/;
+            var value = document.getElementById('name').value;
+            var check = regexp.test(value);
+            var resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+
+            if (check === true) {
+                resultadoDiv.innerHTML += value.replace(regexp,'$2,$1');
+            } else {
+                resultadoDiv.innerHTML += 'Error en formato';
+            }
+        }
+    </script>
+</body>
+
+</html>
