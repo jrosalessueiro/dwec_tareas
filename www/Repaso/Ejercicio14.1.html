@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Ejercicio NODOS 14.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ejercicio14.1Styles.css">
+</head>
+
+<body>
+    <h1>Ejercicio DOM 14.1</h1>
+    <h2>Utilizando las funciones DOM, mostrar por pantalla la siguiente información:</h2>
+    <h3>
+        <ol>
+            <li>Número de enlaces de la página</li>
+            <li>Dirección a la que enlaza el penúltimo enlace</li>
+            <li>Numero de enlaces que enlazan a http://prueba</li>
+            <li>Número de enlaces del tercer párrafo</li>
+        </ol>
+    </h3>
+
+    <div id="resultado"></div>
+
+    <form action="#" onsubmit="calcular()">
+        <label for="contar" name="contar">Introduzca el código de la página web:</label>
+        <textarea name="html" id="html" required></textarea>
+        <button type="submit">Calcular</button>
+    </form>
+
+    <script>
+        function calcular() {
+            var texto = document.getElementById('html').value;
+            var resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+
+            //Crear elemento DOM a partir del textarea
+            var divTemp = document.createElement('div');
+            divTemp.innerHTML = texto;
+
+            var enlaces = divTemp.getElementsByTagName('a');
+
+            var web = 'http://prueba';
+            var pruebaLink = 0;
+            for (var i = 0; i <= enlaces.length-1; i++) {
+                //El método indexOf() devuelve el índice en el cual se encuentra la subcadena dentro de la cadena original. 
+                //Si no encuentra la subcadena, devuelve -1.
+                if (enlaces[i].href === web) {
+                    pruebaLink++;
+                }
+            }
+
+            var parrafos = divTemp.getElementsByTagName('p');
+            var enlacesParrafo = parrafos[2].getElementsByTagName('a');
+
+            resultadoDiv.innerHTML += 'El número de enlaces es: ' + enlaces.length + '<br>';
+            resultadoDiv.innerHTML += 'El penúltimo enlace nos dirige a la página: ' + enlaces[enlaces.length - 2].href + '<br>';
+            resultadoDiv.innerHTML += 'El número de enlaces que nos dirigen a ' + web + ' son: ' + pruebaLink + '<br>';           
+            resultadoDiv.innerHTML += 'El número de enlaces en el párrafo 3 son: ' + enlacesParrafo.length + '<br>';
+
+        }
+    </script>
+</body>
+
+</html>
