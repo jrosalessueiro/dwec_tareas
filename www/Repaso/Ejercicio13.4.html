@@ -13,6 +13,33 @@
     <h2>Dados un nombre y un apellido, crear la expresión regulatr necesaria para mostrarlos en orden inverso y
         separados por una coma.</h2>
     <h3>Por ejemplo, la cadena "John Smith", convertirla en "Smith, John".</h3>
+
+    <form action="#" onsubmit="cambiar()">
+        <label for="name">Introduzca tu nombre y apellidos:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Cambiar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function cambiar() {
+            var value = document.getElementById('name').value;
+            var nameComplete = value.split(/\s+/);
+            var resultadoDiv = document.getElementById('resultado');
+
+            if (nameComplete.length === 2) {
+                resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+                resultadoDiv.innerHTML += nameComplete[1] + ', ' + nameComplete[0];
+            } else if (nameComplete.length === 3) {
+                resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+                resultadoDiv.innerHTML += nameComplete[1] + ' ' + nameComplete[2] + ', ' + nameComplete[0];
+            } else {
+                resultadoDiv.innerHTML = '<h2>Resultado</h2>';
+                resultadoDiv.innerHTML += nameComplete[2] + ' ' + nameComplete[3] + ', ' + nameComplete[0] + ' ' + nameComplete[1];
+            }
+        }
+    </script>
 </body>
 
 </html>
