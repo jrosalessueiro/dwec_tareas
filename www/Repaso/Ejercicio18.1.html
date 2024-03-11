@@ -1,0 +1,99 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ejercicio EVENTOS 18.1</title>
+
+    <style type="text/css">
+        body {
+            font-family: arial, helvetica;
+        }
+
+        .box {
+            width: 160px;
+            height: 160px;
+            border: thin solid silver;
+            padding: .5em;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .box h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio EVENTOS 18</h1>
+    <h2>Completar el código JavaScript proporcionado para que:</h2>
+
+    <h3>
+        <ol>
+            <li>Al mover el ratón en cualquier punto de la ventana del navegador, se muestre la posición del puntero
+                respecto del navegador y respecto de la página. (Para mostrar los mensajes, utilizar la función
+                muestraInformacion() deduciendo su funcionamiento a partir de su código fuente)</li>
+            <li>Al pulsar cualquier tecla, el mensaje mostrado debe cambiar para indicar el nuevo evento y su
+                información asociada.</li>
+            <li>Añadir la siguiente característica al script: cuando se pulsa un botón del ratón, el color de fondo del
+                cuadro de mensaje debe ser amarillo (#FFFFCC) y cuando se pulsa una tecla, el color de fondo debe ser
+                azul (#CCE6FF). Al volver a mover el ratón, el color de fondo vuelve a ser blanco.</li>
+        </ol>
+    </h3>
+
+    <div id="raton" class="box">
+        <h1>Ratón</h1>
+        <div id="info">Posición del puntero: (0, 0) | Posición en la página: (0, 0)</div>
+        <script>
+            var puntero = document.getElementById('raton');
+            var info = document.getElementById('info');
+
+            puntero.addEventListener('mousemove', function (event) {
+                var posX = event.clientX;
+                var posY = event.clientY;
+                var pageX = event.pageX;
+                var pageY = event.pageY;
+
+                muestraInformacion('Navegador: [' + posX + ', ' + posY + '] | Página: [' + pageX + ', ' + pageY + ']');
+                info.style.backgroundColor = 'white';
+            });
+
+            function muestraInformacion(mensaje) {
+                info.textContent = mensaje;
+            }
+
+            document.addEventListener('click',function(event){
+                puntero.style.backgroundColor='#FFFFCC';
+            })
+            document.addEventListener('mousemove',function(event){
+                puntero.style.backgroundColor='white';
+            })
+            document.addEventListener('keypress',function(event){
+                teclado.style.backgroundColor='#CCE6FF';
+            })
+        </script>
+    </div>
+    <div id="teclado" class="box">
+        <h1>Teclado</h1>
+        <div id="teclas"></div>
+        <script>
+            var teclado = document.getElementById('teclado');
+            var teclas = document.getElementById('teclas');
+
+            teclado.addEventListener('keypress', function (event) {
+                var infoCode = event.keyCode;
+                var infoKey = event.key;
+                muestraInformacion2('Caracter [' + infoKey + '] | Código [' + infoCode + ']');
+            })
+
+            function muestraInformacion2(mensaje) {
+                teclas.textContent = mensaje;
+            }
+        </script>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
