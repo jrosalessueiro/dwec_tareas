@@ -1,0 +1,82 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Ejercicio Eventos 17.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ejercicio17Styles.css">
+</head>
+
+<body>
+    <h1>Ejercicio 17 EVENTOS</h1>
+    <h2>A partir de la página web proporcionada, completar el código JavaScript para que:</h2>
+
+    <h3>
+        <ol>
+            <li>Cuando se pinche sobre el primer enlace, se oculte su sección relacionada</li>
+            <li>Cuando se vuelva a pinchar sobre el mismo enlace, se muestre otra vez esa sección de contenidos</li>
+            <li>Completar el resto de enlaces de la página para que su comportamiento sea idéntico al del primer enlace
+            </li>
+            <li>Cuando una sección se oculte, debe cambiar el mensaje del enlace asociado</li>
+        </ol>
+    </h3>
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero.
+            Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+            vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor,
+            pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus
+            ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+            posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a href="#" class="link">Ocultar contenidos</a>
+    </div>
+    <br />
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero.
+            Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+            vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor,
+            pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus
+            ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+            posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a href="#" class="link">Ocultar contenidos</a>
+    </div>
+    <br />
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero.
+            Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+            vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor,
+            pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus
+            ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+            posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a href="#" class="link">Ocultar contenidos</a>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script>
+        // Obtener todos los enlaces con la clase link
+        var links = document.querySelectorAll('.link');
+
+        // Agregar evento de clic a cada enlace
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+                var paragraph = this.parentNode.querySelector('p'); // Obtener el párrafo relacionado
+                if (paragraph.style.display === 'none') {
+                    paragraph.style.display = 'block'; // Mostrar el párrafo
+                    this.textContent = 'Ocultar contenidos'; // Cambiar el texto del enlace
+                } else {
+                    paragraph.style.display = 'none'; // Ocultar el párrafo
+                    this.textContent = 'Mostrar contenidos'; // Cambiar el texto del enlace
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
