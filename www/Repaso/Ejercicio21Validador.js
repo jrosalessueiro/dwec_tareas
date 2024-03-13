@@ -13,7 +13,7 @@ function validaNombre() {
 function validaEmail() {
     var email = document.getElementById('registro_email').value;
     var regexp = /^\s+$/;
-    var regexpEmail = /^\w+(.-_\w+)*@\w+(.-_\w+)*\.\w+(.-_\w+)*$/
+    var regexpEmail = /^\w+([.-+_']\w+)*@\w+([.-_]\w+)*\.\w+([.-_]\w+)*$/
 
     if (email === null || regexp.test(email) === true || email.length === 0) {
         alert('El campo "Email" es obligatorio.')
@@ -40,7 +40,8 @@ function validaComentarios() {
 function validaPassword() {
     var password = document.getElementById('registro_password').value;
     var regexp = /^\s+$/;
-    var regexpPassword = /^\d+(a-z)+(A-Z)+{6,}/;
+    //var regexpPassword = /^\d+(a-z)+(A-Z)+{6,}/;
+    var regexpPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     if (password === null || regexp.test(password) === true || password.length === 0) {
         alert('El campo "Password" es obligatorio.')

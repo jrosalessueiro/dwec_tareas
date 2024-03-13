@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Pruebas de GRID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #0 {
+            background-color: aquamarine;
+            border: 1px solid black;
+            display: grid;
+            grid-template-areas: "header header header";
+            /* "leftUp center rightUp"
+                                "leftUp center rightUp"
+                                "leftUp center rightUp"
+                                "leftDown center rightDown"
+                                "leftDown center rightDown"
+                                "leftDown center rightDown"
+                                "footer footer footer";*/
+            grid-template-columns: 300px 1fr 300px;
+            grid-template-rows: 200px 100px 1fr 50px 100px 1fr 50px 200px;
+        }
+
+        #1 {
+            background-color: gray;
+            border: 2px solid black;
+            display: grid;
+            grid-area: header;
+            grid-template-areas: "leftHeader center rightHeader";
+            grid-template-columns: 250px 1fr 500px;
+            grid-template-rows: 200px;
+        }
+
+        #2 {
+            background-color: #023589;
+            border: 2px solid black;
+            display: grid;
+            grid-area: leftHeader;
+            text-align: center;
+            justify-self: flex-start;
+        }
+
+        #3 {
+            background-color: #232114;
+            border: 2px solid black;
+            display: grid;
+            grid-area: rightHeader;
+            justify-self: flex-end;
+            text-align: center;
+            align-self: flex-end;
+        }
+    </style>
+
+<body>
+    <div id="0">
+        <div id="1">
+            <p>UNO</p>
+            <div id="2">
+                <p>DOS</p>
+            </div>
+            <div id="3">
+                <p>TRES</p>
+            </div>
+        </div>
+        <div id="4">
+            <p>CUATRO</p>
+            <div id="5">
+                <p>CINCO</p>
+                <div id="6">
+                    <p>SEIS</p>
+                    <div id="7">
+                        <p>SIETE</p>
+                    </div>
+                    <div id="8">
+                        <p>OCHO</p>
+                    </div>
+                </div>
+                <div id="9">
+                    <p>NUEVE</p>
+                    <div id="10">
+                        <p>DIEZ</p>
+                    </div>
+                    <div id="11">
+                        <p>ONCE</p>
+                    </div>
+                </div>
+            </div>
+            <div id="12">
+                <p>DOCE</p>
+                <div id="13">
+                    <p>TRECE</p>
+                </div>
+                <div id="14">
+                    <p>CATORCE</p>
+                </div>
+                <div id="15">
+                    <p>QUINCE</p>
+                </div>
+                <div id="16">
+                    <p>DIECISEIS</p>
+                </div>
+                <div id="17">
+                    <p>DIECISIETE</p>
+                </div>
+                <div id="18">
+                    <p>DIECIOCHO</p>
+                </div>
+            </div>
+            <div id="19">
+                <p>DIECINUEVE</p>
+                <div id="20">
+                    <p>VEINTE</p>
+                    <div id="21">
+                        <p>VEINTIUNO</p>
+                    </div>
+                    <div id="22">
+                        <p>VEINTIDOS</p>
+                    </div>
+                </div>
+                <div id="23">
+                    <p>VEINTITRES</p>
+                </div>
+            </div>
+        </div>
+        <div id="24">
+            <p>VEINTICUATRO</p>
+        </div>
+    </div>
+</body>
+</head>
+
+</html>
