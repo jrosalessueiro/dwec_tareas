@@ -6,127 +6,375 @@
     <title>Pruebas de GRID</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-        #0 {
-            background-color: aquamarine;
+        body {
+            background-color: #FFFFFF;
+            width: 920px;
+            border: 1px black solid;
+            font: normal small "Trebuchet MS", Arial, Helvetica, sans-serif;
+            color: #666666;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333333;
+        }
+
+        h3 {
+            font-size: 1em;
+        }
+
+        p,
+        blockquote,
+        ul,
+        ol {
+            margin-bottom: 1.5em;
+            line-height: 1.65em;
+            text-align: justify;
+        }
+
+        blockquote {
+            margin-left: 2em;
+            margin-right: 2em;
+            font-style: italic;
+        }
+
+        ul {
+            margin-left: 3em;
+        }
+
+        ol {
+            margin-left: 3em;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #3E9722;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #E58C24;
+        }
+
+        img {
+            border: none;
+        }
+
+        .div1 {
             border: 1px solid black;
             display: grid;
-            grid-template-areas: "header header header";
-            /* "leftUp center rightUp"
-                                "leftUp center rightUp"
-                                "leftUp center rightUp"
-                                "leftDown center rightDown"
-                                "leftDown center rightDown"
-                                "leftDown center rightDown"
-                                "footer footer footer";*/
-            grid-template-columns: 300px 1fr 300px;
-            grid-template-rows: 200px 100px 1fr 50px 100px 1fr 50px 200px;
+            grid-template-areas: "header header header"
+                "left center right"
+                "footer footer footer";
+            grid-template-columns: 220px 480px 180px;
+            gap: 10px;
         }
 
-        #1 {
-            background-color: gray;
-            border: 2px solid black;
-            display: grid;
+        .div2 {
             grid-area: header;
-            grid-template-areas: "leftHeader center rightHeader";
-            grid-template-columns: 250px 1fr 500px;
-            grid-template-rows: 200px;
+            padding: 20px 20px 0 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
         }
 
-        #2 {
-            background-color: #023589;
-            border: 2px solid black;
-            display: grid;
-            grid-area: leftHeader;
-            text-align: center;
-            justify-self: flex-start;
+        .div3 {}
+
+        .div4 {
+            justify-self: end;
+            display: flex;
+            flex-direction: row;
+            order: 2;
         }
 
-        #3 {
-            background-color: #232114;
-            border: 2px solid black;
-            display: grid;
-            grid-area: rightHeader;
-            justify-self: flex-end;
+        .div4 a {
+            display: block;
+            margin-left: 2px;
+            padding-top: 10px;
+            background-image: url(images/DIW04_SOL_TAR_R03.jpg) no-repeat;
             text-align: center;
-            align-self: flex-end;
+            text-decoration: none;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .div4 a:hover {
+            background-image: url(images/Copia\ de\ DIW04_SOL_TAR_R04.jpg) no-repeat;
+        }
+
+        .div4 a:active {
+            background-image: url(images/Copia\ de\ DIW04_SOL_TAR_R05.jpg) no-repeat;
+        }
+
+        .div4 ul {
+            margin: 0px;
+            padding-top: 79px;
+            list-style: none;
+        }
+
+        .div4 li {
+            display: inline;
+        }
+
+        .div5 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .div6 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .div7 {
+            display: flex;
+            justify-content: space-between;
+            background: #3c74e6 url(images/Copia\ de\ DIW04_SOL_TAR_R06.jpg) repeat-x;
+        }
+
+        .di7 h2 {
+            height: 28px;
+            padding: 12px 0 0 20px;
+            text-transform: uppercase;
+            font-size: 1em;
+            color: #FFFFFF;
+        }
+
+        .div8 {}
+
+        .div9 {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .div11 {}
+
+        .div12 {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            background-image: url(images/Copia\ de\ DIW04_SOL_TAR_R02.jpg) no-repeat;
+        }
+
+        .div14 {
+            display: flex;
+        }
+
+        .div14 img {
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        .div14 p {
+            margin-top: 0;
+            align-self: flex-start;
+        }
+
+        .div15 {}
+
+        .div17 {}
+
+        .div18 {}
+
+        .div19 {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .div20 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .div20 ul {
+            margin-left: 0;
+            padding-left: 0;
+            list-style: inside;
+        }
+
+        .div22 {}
+
+        .div23 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .div24 {
+            width: 960px;
+            grid-area: footer;
+            align-items: start;
+            place-content: center;
+            margin: 0 auto;
+            padding: 20px 0;
+            background: url(images/Copia\ de\ DIW04_SOL_TAR_R02.jpg) no-repeat;
+        }
+
+        .div24 p {
+            margin: 0;
+            text-align: center;
+            font-size: x-small;
+            line-height: normal;
+        }
+
+        .div24 a {
+            text-decoration: underline;
+            color: #666666;
+        }
+
+        .div24 a:hover {
+            text-decoration: none;
         }
     </style>
+</head>
 
 <body>
-    <div id="0">
-        <div id="1">
-            <p>UNO</p>
-            <div id="2">
-                <p>DOS</p>
+    <div class="div1">
+        <div class="div2">
+            <div class="div3">
+                <h1><a href="#">TodoFP</a></h1>
+                <h2><a href="http://www.educacion.gob.es">www.educacion.gob.es</a></h2>
             </div>
-            <div id="3">
-                <p>TRES</p>
+            <div class="div4">
+                <ul>
+                    <li class="active"><a href="#" title="">Inicio</a></li>
+                    <li><a href="#" title="">Información</a></li>
+                    <li><a href="#" title="">Cursos</a></li>
+                    <li><a href="#" title="">Alumnos</a></li>
+                    <li><a href="#" title="">Ayuda</a></li>
+                </ul>
             </div>
         </div>
-        <div id="4">
-            <p>CUATRO</p>
-            <div id="5">
-                <p>CINCO</p>
-                <div id="6">
-                    <p>SEIS</p>
-                    <div id="7">
-                        <p>SIETE</p>
-                    </div>
-                    <div id="8">
-                        <p>OCHO</p>
-                    </div>
+        <div class="div5">
+            <div class="div6">
+                <div class="div7">
+                    <h2>Area de usuarios</h2>
                 </div>
-                <div id="9">
-                    <p>NUEVE</p>
-                    <div id="10">
-                        <p>DIEZ</p>
-                    </div>
-                    <div id="11">
-                        <p>ONCE</p>
-                    </div>
+                <div class="div8">
+                    <form id="form1" method="post" action="#">
+                        <fieldset>
+                            <legend>Accede</legend>
+                            <label for="inputtext1">ID de Usuario:</label>
+                            <input id="inputtext1" type="text" name="inputtext1" value="" />
+                            <label for="inputtext2">Contraseña:</label>
+                            <input id="inputtext2" type="password" name="inputtext2" value="" />
+                            <input id="inputsubmit1" type="submit" name="inputsubmit1" value="Acceder" />
+                            <p><a href="#">¿Olvidaste la contraseña?</a></p>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
-            <div id="12">
-                <p>DOCE</p>
-                <div id="13">
-                    <p>TRECE</p>
+            <div class="div9">
+                <div class="div7">
+                    <h2>Unidades de trabajo</h2>
                 </div>
-                <div id="14">
-                    <p>CATORCE</p>
-                </div>
-                <div id="15">
-                    <p>QUINCE</p>
-                </div>
-                <div id="16">
-                    <p>DIECISEIS</p>
-                </div>
-                <div id="17">
-                    <p>DIECISIETE</p>
-                </div>
-                <div id="18">
-                    <p>DIECIOCHO</p>
-                </div>
-            </div>
-            <div id="19">
-                <p>DIECINUEVE</p>
-                <div id="20">
-                    <p>VEINTE</p>
-                    <div id="21">
-                        <p>VEINTIUNO</p>
-                    </div>
-                    <div id="22">
-                        <p>VEINTIDOS</p>
-                    </div>
-                </div>
-                <div id="23">
-                    <p>VEINTITRES</p>
+                <div class="div11">
+                    <ul>
+                        <li>
+                            <h3>DIW01, 2011</h3>
+                            <p><a href="#">Planificación de interfaces gráficas.&#8230;</a></p>
+                        </li>
+                        <li>
+                            <h3>DIW02, 2011</h3>
+                            <p><a href="#">Accesibilidad en la Web.&#8230;</a></p>
+                        </li>
+                        <li>
+                            <h3>DIW03, 2011</h3>
+                            <p><a href="#">Usabilidad en la Web.&#8230;</a></p>
+                        </li>
+                        <li>
+                            <h3>DIW04, 2011</h3>
+                            <p><a href="#">Hojas de estilos.&#8230;</a></p>
+                        </li>
+                        <li>
+                            <h3>DIW05, 2011</h3>
+                            <p><a href="#">Contenidos multimedia en la Web: Imágenes.&#8230;</a></p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div id="24">
-            <p>VEINTICUATRO</p>
+        <div class="div12">
+            <div class="div7">
+                <h2 class="title">
+                    <span>¡Bienvenido a TodoFP!</span>
+                </h2>
+                <h3 class="date">
+                    <span class="month">Oct.</span>
+                    <span class="day">10</span>
+                    <span class="year">,2011</span>
+                </h3>
+            </div>
+            <div class="div14">
+                <img src="images/DIW04_SOL_TAR_R08.jpg" alt="" width="120" height="120" class="left" />
+                <p><strong>FP a distancia</strong> Esta oferta está dirigida especialmente a aquellas personas que,
+                    por diferentes razones (no solo laborales), no pueden cursar en los centros educativos y en el
+                    horario presencial, la <a href="http://todofp.es/todofp">Formación Profesional</a>. Por tanto,
+                    mayoritariamente será el colectivo de personas adultas el destinatario de esta modalidad de
+                    enseñanza.
+                    Toda la información desde la web: <a href="http://www.educacion.gob.es/fponline.html">FP
+                        online</a>.<em>¡¡Matricúlate!!</em></p>
+            </div>
+            <div class="div15">
+                <p>Realizado por Manuel Vieites <a href="#">TodoFP</a> | <a href="#">Educación</a></p>
+            </div>
+            <div class="div7">
+                <h2 class="title"><span>DIW04. Hojas de estilos.</span></h2>
+                <h3 class="date"><span class="month">Oct.</span> <span class="day">10</span><span class="year">,
+                        2011</span></h3>
+            </div>
+            <div class="div17">
+                <blockquote>
+                    <p>&ldquo;Orden EDU/2887/2010, de 2 de noviembre, por la que se establece el currículo del ciclo
+                        formativo de Grado Superior correspondiente al título de Técnico Superior en Desarrollo de
+                        Aplicaciones Web.&rdquo;</p>
+                </blockquote>
+                <p>Técnicas, procedimiento y actitudes relacionadas:</p>
+                <ol>
+                    <li>Crear y vincular hojas de estilo</li>
+                    <li>Crear y vincular hojas de estilo en cascada externa</li>
+                </ol>
+                <p>Conceptos soporte relacionados:</p>
+                <ol>
+                    <li>Estilos en línea basados en etiquetas y en clases</li>
+                    <li>Hojas de estilo auditivas</li>
+                    <li>Hojas de estilo para imprimir</li>
+                    <li>Herramientas y test de verificación</li>
+                </ol>
+            </div>
+            <div class="div18">
+                <p>Realizado por Manuel Vieites <a href="#">DIW</a> | <a href="#">TodoFP</a></p>
+            </div>
+        </div>
+        <div class="div19">
+            <div class="div20">
+                <div class="div7">
+                    <h2>Webs de Interés</h2>
+                </div>
+                <div class="div22">
+                    <ul>
+                        <li> <a href="#">TodoFP</a></li>
+                        <li> <a href="#">FP online </a></li>
+                        <li> <a href="#">Platega </a></li>
+                        <li> <a href="#">IES San Clemente </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="div23">
+                <a href="#"><img src="images/DIW04_SOL_TAR_R00.jpg" alt="" width="120" height="600" /></a>
+            </div>
+        </div>
+        <div class="div24">
+            <p id="legal">Copyright &copy; 2011 TodoFP. Todos los derechos reservados. Diseñado por <a
+                    href="http://www.educacion.gob.es">www.educacion.gob.es</a>.</p>
         </div>
     </div>
+
+
+
 </body>
 </head>
 
