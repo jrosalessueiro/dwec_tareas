@@ -1,5 +1,4 @@
-
-DOCTYPE
+<!DOCTYPE html>
 
 <html lang="en">
 <meta charset="utf-8">
@@ -14,32 +13,182 @@ DOCTYPE
             margin: 10px;
             padding: 5px;
         }
+
+        #list {
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: underline;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            gap: 5px;
+        }
+
+        input {
+            font-weight: bold;
+        }
+
+        div input:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        li:hover {
+            background-color: lightcoral;
+            width: 10em;
+        }
+
+        #resultado {
+            font-size: large;
+            font-weight: bold;
+            background-color: lightgrey;
+        }
     </style>
 </head>
 
-<body>
+<body onload="crearArray()">
     <h1>Ejercicio de Arrays</h1>
-    <h2>A partires dun Array cun listado de países realiza o seguinte:</h2>
-    <h3>
-        <ol>
-            <li> Amosa o número de elementos do Array.</li>
-            <li> Amosa todos os países.</li>
-            <li> Amosa todos os países en sentido inverso. Ollo, que o Array orixinal non
-                quede modificado, é dicir, que non quede ordenado ao revés.</li>
-            <li> Engade un país ao comezo do Array.</li>
-            <li> Engade un país ao final do Array.</li>
-            <li> Elimina un elemento ao comezo do Array e indica cal foi.</li>
-            <li> Elimina un elemento ao final do Array e indica cal foi.</li>
-            <li> Amosa o elemento que se atope na posición que che indique o usuario.</li>
-            <li> Amosa a posición na que se atopa un elemento indicado polo usuario.</li>
-            <li> Amosa os elementos que se atopan entre dúas posicións indicadas polo usuario.</li>
-        </ol>
-    </h3>
-    <h4>Terás que crear e usar, como mínimo, unha función por cada punto. Faino en JS e,
-        despois, en TS.</h4>
-    <script>
+    <h2>A partir de este grupo de países:</h2>
 
-        
+    <ul id="list">
+        <li>Ecuador</li>
+        <li>Cuba</li>
+        <li>Bolivia</li>
+        <li>Costa Rica</li>
+        <li>Panamá</li>
+        <li>Uruguay</li>
+        <li>Kenia</li>
+        <li>España</li>
+        <li>Alemania</li>
+        <li>Francia</li>
+        <li>Italia</li>
+        <li>Reino Unido</li>
+        <li>Grecia</li>
+        <li>Portugal</li>
+        <li>Suecia</li>
+        <li>Noruega</li>
+        <li>Egipto</li>
+        <li>China</li>
+        <li>India</li>
+        <li>Japón</li>
+        <li>Corea del Sur</li>
+        <li>Indonesia</li>
+        <li>Turquía</li>
+        <li>Filipinas</li>
+        <li>Tailandia</li>
+        <li>Vietnam</li>
+    </ul>
+
+    <h2>Elije lo que quieres hacer:</h2>
+
+
+    <form action="#" id="formulario" method="post">
+        <label for="formulario">Opciones:</label>
+        <div class="botones">
+            <input type="button" id="numero" value="Número países" onclick="showNumber()" />
+            <input type="button" id="paises" value="Mostrar Todos" onclick="showAll()" />
+            <input type="button" id="reverse" value="Mostrar Todos Descendente" onclick="showAllReverse()" />
+            <input type="button" id="nuevoInicio" value="Añadir nuevo al inicio" onclick="addStart()" />
+            <input type="button" id="nuevoFin" value="Añadir nuevo al final" onclick="addEnd()" />
+            <input type="button" id="eliminaInicio" value="Eliminar el primero" onclick="deleteFirst()" />
+            <input type="button" id="eliminaFinal" value="Eliminar el último" onclick="deleteLast()" />
+            <input type="button" id="indice" value="Mostrar segun posición" onclick="showChosen()" />
+            <input type="button" id="posicion" value="Mostrar posición" onclick="showOrder()" />
+            <input type="button" id="tramo" value="Mostrar paises entre dos posiciones" onclick="showBetween()" />
+        </div>
+
+    </form>
+    <div id="resultado"></div>
+    <script>
+        // Declaramos las variables fuera de la función crearArray()
+        var paises = [];
+        var resultado = document.getElementById('resultado');
+
+        function crearArray() {
+            let listaPaises = document.getElementById("list");
+
+            // Recorre los elementos de la lista
+            for (let i = 0; i < listaPaises.children.length; i++) {
+                let elemento = listaPaises.children[i];
+                paises.push(elemento.innerHTML);
+            }
+        }
+
+        function showNumber() {
+            resultado.textContent = 'El total de paises que hay en el array son: ' + paises.length;
+        }
+
+        function showAll() {
+            var total = paises[0];
+
+            for (let j = 1; j < paises.length; j++) {
+                total += ', ' + paises[j];
+
+            }
+            resultado.textContent = 'Los países que quedan son: ' + total;
+        }
+
+        function showAllReverse() {
+            var total = paises[paises.length - 1];
+
+            for (let j = paises.length - 2; j > -1; j--) {
+                total += ', ' + paises[j];
+
+            }
+            resultado.textContent = 'Los países que quedan son: ' + total;
+        }
+
+        function addStart() {
+            var nuevo = prompt('Elija un país para añadir:');
+            if (nuevo != null && nuevo != '' && !paises.includes(nuevo)) {
+                paises.unshift(nuevo);
+                resultado.textContent = nuevo + ' ha sido incluído en primer lugar.'
+            } else if (paises.includes(nuevo)) {
+                resultado.textContent = nuevo + ' ya existe en el array.'
+            } else {
+                resultado.textContent = 'No ha introducido ningún país.'
+            }
+        }
+        function addEnd() {
+            var nuevo = prompt('Elija un país para añadir:');
+            if (nuevo != null && nuevo != '' && !paises.includes(nuevo)) {
+                paises.push(nuevo);
+                resultado.textContent = nuevo + ' ha sido incluído en último lugar.'
+            } else if (paises.includes(nuevo)) {
+                resultado.textContent = nuevo + ' ya existe en el array.'
+            } else {
+                resultado.textContent = 'No ha introducido ningún país.'
+            }
+        }
+        function deleteFirst() {
+            if (paises.length > 0) {
+                var eliminado = paises.shift();
+                resultado.textContent = eliminado + ' ha sido eliminado.'
+            } else {
+                resultado.textContent = 'No hay elementos que eliminar.'
+            }
+        }
+        function deleteLast() {
+            if (paises.length > 0) {
+                var eliminado = paises.pop();
+                resultado.textContent = eliminado + ' ha sido eliminado.'
+            } else {
+                resultado.textContent = 'No hay elementos que eliminar.'
+            }
+        }
+        function showChosen() {
+            var index = prompt('Indique el índice del país a mostrar:')
+            if (index != null && index != '') {
+                resultado.textContent = 'No ha introducido ningún país.'
+            } else if (paises.length > 0) {
+                var elegido = paises[index - 1];
+                resultado.textContent = 'El país que ocupael lugar ' + index + ' es: ' + elegido;
+            } else {
+                resultado.textContent = 'No hay elementos que mostrar.'
+            }
+        }
     </script>
 </body>
 

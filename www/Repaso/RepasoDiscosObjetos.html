@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Repaso Objetos</title>
+    <style>
+        body {
+            background-color: beige;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        ol li {
+            list-style-type: disc;
+        }
+
+        li:hover {
+            background-color: lightcoral;
+            width: 40%;
+        }
+
+        #resultado {
+            font-size: large;
+            font-weight: bold;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio Repaso Discos Objetos</h1>
+    <h2>Necesitamos almacenar nun programa todos os discos de música que temos na casa.
+        Crea un obxecto “disco” que almacene a seguinte información:</h2>
+    <ol>
+        <li>Nome do disco.</li>
+        <li>Grupo de música ou cantante.</li>
+        <li>Ano de publicación.</li>
+        <li>Tipo de música (rock, pop, jazz, folk, k-pop,...).</li>
+        <li>Prestado: si ou non (booleano).</li>
+    </ol>
+    <h2> Ademais deberemos implementar os seguintes métodos:</h2>
+    <ol>
+        <li>Un construtor.</li>
+        <li>Un sistema de carga de datos dun disco (a parte do construtor).</li>
+        <li>Amosar toda a información dun disco.</li>
+        <li>Amosar todos os discos (pódense utilizar Arrays).</li>
+    </ol>
+    <h2>Elija una opción:</h2>
+    <form action="#" id="formulario" name="diskOptions">
+        <div class="options">
+        <input type="button" onclick="addDisk()" value="Añadir nuevo disco">
+        <input type="button" onclick="showDisk()" value="Mostrar disco">
+        <input type="button" onclick="showAll()" value="Mostrar discografia">
+
+    </div>
+    </form>
+    <div id="resultado"> </div>
+    <script>
+        let disks = new Map();
+        let resultado = document.getElementById('resultado');
+
+        class Disk {
+            constructor(name, group, year, type, lend) {
+                this.name = name;
+                this.group = ngroupme;
+                this.year = year;
+                this.type = type;
+                this.lend = lend;
+            }
+
+            static addDisk() {
+                const aName = prompt('Indique el nombre del disco:');
+                const aGroup = prompt('Indique el nombre del grupo o cantante:');
+                const aYear = prompt('Indique el año de publicación del disco:');
+                const aType = prompt('Indique el tipo de música del disco:');
+                const aLend = confirm('Está disponible?');
+
+                nuevo = new Disk();
+
+                if (disks.get(aName) == null) {
+                    disks.set(aName, nuevo);
+                } else {
+                    resultado.textContent = 'El disco ya está en la colección';
+                }
+            }
+            static showDisk(name) {
+                if (disks.get(name) != null) {
+                    resultado.textContent = disks[name];
+                } else {
+                    resultado.textContent = 'El disco no se encuentra en la colección';
+                }
+            }
+
+            static showAll() {
+                for (let index = 0; index < disks.length; index++) {
+                    const element = disks[index];
+                    if (disks.get(name) != null) {
+                        resultado.textContent = disks[name];
+                    } else {
+                        resultado.textContent = 'El disco no se encuentra en la colección';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

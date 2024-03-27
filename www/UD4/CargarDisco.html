@@ -12,11 +12,11 @@
 <body>
     <script>
         function cargarDisco(name, group, year, style, available) {
-            var name = document.getElementById('name').value;
-            var group = document.getElementById('group').value;
-            var year = document.getElementById('year').value;
-            var style = document.getElementById('style').value;
-            var available = document.getElementById('available').value;
+            let name = document.getElementById('name').value;
+            let group = document.getElementById('group').value;
+            let year = document.getElementById('year').value;
+            let style = document.getElementById('style').value;
+            let available = document.getElementById('available').value;
 
             if (name && group && year && style && available) {
                 const nuevoDisco = new Disk(name, group, year, style, available);
